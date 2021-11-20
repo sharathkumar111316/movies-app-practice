@@ -40,6 +40,7 @@ const App = () => {
   };
 
   const addFavouriteMovie = (movie) => {
+    if (favourites.includes(movie)) return alert('"'+ movie.Title + '" is already added to your favourites..!')
     const newFavouriteList = [...favourites, movie];
     setFavourites(newFavouriteList);
     saveToLocalStorage(newFavouriteList);
@@ -57,7 +58,7 @@ const App = () => {
   return (
     <div className='container-fluid movie-app'>
       <div className='row d-flex align-items-center mt-4 mb-4'>
-        <MovieListHeading heading='Movies' />
+        <MovieListHeading heading='GSK Movies' />
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className='row'>
@@ -67,6 +68,7 @@ const App = () => {
           favouriteComponent={AddFavourites}
         />
       </div>
+      <hr></hr>
       <div className='row d-flex align-items-center mt-4 mb-4'>
         <MovieListHeading heading='Favourites' />
       </div>
